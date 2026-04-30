@@ -34,6 +34,7 @@ WINDOWS = {
     "6M": 180,
     "1Y": 365,
     "5Y": 365 * 5,
+    "10Y": 365 * 10,
 }
 
 app = FastAPI(title="Portfolio Correlation API", version="1.0.0")
@@ -214,7 +215,7 @@ def correlation_pair(
     ticker1: str = Query(...),
     ticker2: str = Query(...),
     window: str = Query("1Y"),
-    rolling: int = Query(30, ge=5, le=120),
+    rolling: int = Query(30, ge=5, le=2520),
 ):
     all_tickers = load_tickers_from_sheet()
     if ticker1 not in all_tickers or ticker2 not in all_tickers:

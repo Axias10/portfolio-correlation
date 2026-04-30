@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { cn } from '../lib/utils';
 
-const WINDOWS = ['3M', '6M', '1Y', '5Y'];
+const WINDOWS = ['3M', '6M', '1Y', '5Y', '10Y'];
 
 export function WindowFilter({ value, onChange }) {
   return (

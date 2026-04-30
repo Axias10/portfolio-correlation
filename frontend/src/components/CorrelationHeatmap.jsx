@@ -13,13 +13,12 @@ export function CorrelationHeatmap({ data, pair, onCellClick }) {
   const gap = 2;
 
   return (
-    <div className="w-full overflow-x-auto">
+    <div className="w-full">
       <div
-        className="inline-grid w-full"
+        className="grid w-full"
         style={{
-          gridTemplateColumns: `${labelW}px repeat(${n}, 1fr)`,
+          gridTemplateColumns: `${labelW}px repeat(${n}, minmax(0, 1fr))`,
           gap: `${gap}px`,
-          minWidth: `${labelW + n * 24 + n * gap}px`,
         }}
       >
         {/* Header row */}

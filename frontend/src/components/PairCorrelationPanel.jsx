@@ -13,7 +13,16 @@ import {
 import { cn } from '../lib/utils';
 import { usePairCorrelation } from '../hooks/usePortfolio';
 
-const ROLLING_OPTIONS = [14, 30, 60, 90];
+const ROLLING_OPTIONS = [
+  { value: 14, label: '14j' },
+  { value: 30, label: '30j' },
+  { value: 60, label: '60j' },
+  { value: 90, label: '90j' },
+  { value: 180, label: '6M' },
+  { value: 252, label: '1Y' },
+  { value: 504, label: '2Y' },
+  { value: 1260, label: '5Y' },
+];
 
 export function PairCorrelationPanel({ ticker1, ticker2, window, rolling, onRollingChange, onClose }) {
   const { data, isLoading } = usePairCorrelation(ticker1, ticker2, window, rolling);
@@ -48,25 +57,25 @@ export function PairCorrelationPanel({ ticker1, ticker2, window, rolling, onRoll
             <span className="font-mono text-sm font-bold text-white">{ticker2}</span>
           </div>
           <div className="mt-0.5 text-[11px] text-slate-500">
-            Corrélation roulante Pearson · fenêtre {rolling}j
+            Corrélation roulante Pearson · fenêtre {rolling} jours bourse
           </div>
         </div>
 
         <div className="flex items-center gap-3">
           {/* Rolling selector */}
-          <div className="flex items-center gap-1 rounded-lg border border-border bg-bg p-1">
-            {ROLLING_OPTIONS.map((d) => (
+          <div className="flex flex-wrap items-center gap-1 rounded-lg border border-border bg-bg p-1">
+            {ROLLING_OPTIONS.map((opt) => (
               <button
-                key={d}
-                onClick={() => onRollingChange(d)}
+                key={opt.value}
+                onClick={() => onRollingChange(opt.value)}
                 className={cn(
                   'rounded px-2 py-0.5 text-[11px] font-medium transition-colors',
-                  rolling === d
+                  rolling === opt.value
                     ? 'bg-accent/20 text-accent'
                     : 'text-slate-500 hover:text-slate-200',
                 )}
               >
-                {d}j
+                {opt.label}
               </button>
             ))}
           </div>
