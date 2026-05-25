@@ -9,6 +9,7 @@ import { AssetCard } from './components/AssetCard';
 import { CorrelationHeatmap } from './components/CorrelationHeatmap';
 import { PerformanceChart } from './components/PerformanceChart';
 import { PairCorrelationPanel } from './components/PairCorrelationPanel';
+import { PortfolioRiskPanel } from './components/PortfolioRiskPanel';
 import { useCorrelation, useNormalized, useSummary } from './hooks/usePortfolio';
 
 export default function App() {
@@ -163,6 +164,8 @@ export default function App() {
             </Section>
           </div>
         </div>
+
+        <PortfolioRiskPanel summaryData={summaryQ.data} corrData={corrQ.data} />
 
         <footer className="pt-4 text-center text-[11px] text-slate-600">
           Data : Yahoo Finance via yfinance · Tickers : Google Sheets · FastAPI + React
