@@ -13,6 +13,7 @@ Real-time portfolio correlation dashboard — FastAPI backend + React/Vite front
 cd backend
 pip install -r requirements.txt
 # (optional) export GOOGLE_SHEET_ID=... and place credentials.json
+# cd c:\Users\Justin\Desktop\Justin\Code_projet\backend ; uvicorn main:app --reload --port 8000
 uvicorn main:app --reload --port 8000
 ```
 
